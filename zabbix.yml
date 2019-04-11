@@ -1,0 +1,29 @@
+---
+  - hosts: all
+    remote_user: echo35
+    become: yes
+    vars:
+      zabbix_server_dbname: zabbix
+      zabbix_server_dbuser: zbx
+      zabbix_server_dbpassword: 'F2ej429Spa'
+      zabbix_url: zabbix.dudebro.io
+      postgresql_databases:
+        - name: zabbix
+      postgresql_users:
+        - name: zbx
+          password: 'F2ej429Spa'
+      policy_files:
+        - ~/Documents/Ansible/selinux/httpd_t.te
+        - ~/Documents/Ansible/selinux/zabbix_t.te
+      state: enabled
+    tasks:
+      - name: Install Zabbix agent.
+        yum:
+          name: zabbix-agent
+          state: present
+    roles:
+     - geerlingguy.postgresql
+     - geerlingguy.apache
+     - dj-wasabi.zabbix-server
+     - dj-wasabi.zabbix-web
+     - selinux-module
