@@ -1,17 +1,17 @@
 ---
   - hosts: all
-    remote_user: echo35
+    remote_user: centos
     become: yes
     vars:
       zabbix_server_dbname: zabbix
       zabbix_server_dbuser: zbx
-      zabbix_server_dbpassword: 'F2ej429Spa'
-      zabbix_url: zabbix.dudebro.io
+      zabbix_server_dbpassword: 'SuperSecure'
+      zabbix_url: zabbixserver.com
       postgresql_databases:
         - name: zabbix
       postgresql_users:
         - name: zbx
-          password: 'F2ej429Spa'
+          password: 'SuperSecure'
       policy_files:
         - ~/Documents/Ansible/selinux/httpd_t.te
         - ~/Documents/Ansible/selinux/zabbix_t.te
