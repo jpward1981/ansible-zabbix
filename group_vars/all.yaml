@@ -1,0 +1,5 @@
+zabbix_server_dbname: zabbix
+zabbix_server_dbuser: zbx
+zabbix_server_dbpassword: 'SuperSecure'
+zabbix_url: zabbix.johnward.us
+#state: enabled

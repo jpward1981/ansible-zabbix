@@ -1,0 +1,13 @@
+---
+- name: Deploy Galera DB server for zabbix
+  hosts: galera-cluster-nodes
+  remote_user: centos
+  become: yes
+  pre_tasks:
+    - name: ensure everything is upto date
+      yum:
+        name: '*'
+        state: latest
+  roles:
+    - role: ansible-mariadb-galera-cluster
+  
