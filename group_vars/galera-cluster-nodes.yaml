@@ -1,0 +1,10 @@
+galera_cluster_name: 'zabbix'
+postgresql_databases:
+  - name: 'zabbix'
+mariadb_mysql_users:
+  - name: 'zbx'
+    hosts: 
+      - '%'
+    password: 'SuperSecure'
+mariadb_mysql_root_password: 'SomthingOtherThanDefault'
+galera_cluster_bind_interface: 'eth1'
