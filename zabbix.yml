@@ -3,6 +3,8 @@
   hosts: zabbix-server
   remote_user: centos
   become: yes
+  vars_files:
+    - group_vars/all.yaml
   pre_tasks:
     - name: Update SELinux Booleans
       seboolean:
@@ -13,6 +15,18 @@
         - { name: "httpd_can_network_connect_db", state: yes }
         - { name: "httpd_can_network_connect", state: yes }
         - { name: "daemons_enable_cluster_mode", state: yes }
+    - name: Update server packages
+      yum:
+        name: "*"
+        state: latest
+    - name: Install MySQL
+      yum:
+        name: "mariadb-server"
+        state: latest
+    - name: Make sure database is running
+      systemd:
+        state: started
+        name: mariadb
   roles:
     - role: geerlingguy.apache
     - role: dj-wasabi.zabbix-server
