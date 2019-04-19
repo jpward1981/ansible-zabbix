@@ -13,8 +13,9 @@
         state: "{{ item.state }}"
       with_items:
         - { name: "httpd_can_network_connect_db", state: yes }
-        - { name: "httpd_can_network_connect", state: yes }
+        - { name: "httpd_can_network_connect_zabbix", state: yes }
         - { name: "daemons_enable_cluster_mode", state: yes }
+        - { name: "zabbix_can_network", state: yes }
     - name: Update server packages
       yum:
         name: "*"
@@ -31,3 +32,8 @@
     - role: geerlingguy.apache
     - role: dj-wasabi.zabbix-server
     - role: dj-wasabi.zabbix-web
+  post_tasks:
+    - name: Install and start the zabbix agent
+      yum:
+        name: "zabbix-agent"
+        state: latest
