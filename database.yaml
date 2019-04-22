@@ -9,4 +9,4 @@
         name: '*'
         state: latest
   roles:
-    - role: mrlesmithjr.mariadb-galera-cluster
+    - role: ansible-mariadb-galera-cluster

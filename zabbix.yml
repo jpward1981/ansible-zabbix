@@ -6,28 +6,36 @@
   vars_files:
     - group_vars/all.yaml
   pre_tasks:
-    - name: Update SELinux Booleans
-      seboolean:
-        name: "{{ item.name }}"
-        persistent: yes
-        state: "{{ item.state }}"
-      with_items:
-        - { name: "httpd_can_network_connect_db", state: yes }
-        - { name: "httpd_can_network_connect_zabbix", state: yes }
-        - { name: "daemons_enable_cluster_mode", state: yes }
-        - { name: "zabbix_can_network", state: yes }
+    # - name: Update SELinux Booleans
+    #   seboolean:
+    #     name: "{{ item.name }}"
+    #     persistent: yes
+    #     state: "{{ item.state }}"
+    #   with_items:
+    #     - { name: "httpd_can_network_connect_db", state: yes }
+    #     - { name: "httpd_can_network_connect_zabbix", state: yes }
+    #     - { name: "daemons_enable_cluster_mode", state: yes }
+    #     - { name: "zabbix_can_network", state: yes }
     - name: Update server packages
       yum:
         name: "*"
         state: latest
-    - name: Install MySQL
+    # - name: Install MySQL
+    #   yum:
+    #     name: "mariadb-server"
+    #     state: latest
+    - name: Install MySQL python package.
       yum:
-        name: "mariadb-server"
+        name: "MySQL-python"
         state: latest
-    - name: Make sure database is running
-      systemd:
-        state: started
-        name: mariadb
+    # - name: Make sure database is running
+    #   systemd:
+    #     state: started
+    #     name: mariadb
+    - name: Set SELinux to permissive.
+      selinux:
+        policy: targeted
+        state: permissive
   roles:
     - role: geerlingguy.apache
     - role: dj-wasabi.zabbix-server

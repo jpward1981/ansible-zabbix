@@ -7,4 +7,4 @@ mariadb_mysql_users:
       - '%'
     password: 'yfqoxkUz'
 mariadb_mysql_root_password: 'yfqoxkUz'
-galera_cluster_bind_interface: 'eth1'
+galera_cluster_bind_interface: 'eth0'
