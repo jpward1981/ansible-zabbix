@@ -5,5 +5,4 @@ zabbix_server_dbname: zabbix
 zabbix_server_dbuser: zbx
 zabbix_server_dbport: 3306
 zabbix_server_dbpassword: 'yfqoxkUz'
-zabbix_database_creation: false
 zabbix_url: zabbix.dudebro.io
