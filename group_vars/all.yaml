@@ -1,8 +1,11 @@
 zabbix_server_database: mysql
 zabbix_server_database_long: mysql
-zabbix_server_dbhost: 209.97.153.15
+#zabbix_server_dbhost: 35.192.8.135
 zabbix_server_dbname: zabbix
 zabbix_server_dbuser: zbx
 zabbix_server_dbport: 3306
 zabbix_server_dbpassword: 'yfqoxkUz'
 zabbix_url: zabbix.dudebro.io
+
+policy_file: selinux/zabbix_sock.te
+state: enabled
