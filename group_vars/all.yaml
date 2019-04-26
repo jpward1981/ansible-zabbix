@@ -4,8 +4,7 @@ zabbix_server_database_long: mysql
 zabbix_server_dbname: zabbix
 zabbix_server_dbuser: zbx
 zabbix_server_dbport: 3306
-zabbix_server_dbpassword: 'yfqoxkUz'
-zabbix_url: zabbix.dudebro.io
-
+zabbix_server_dbpassword: 'SuperSecure'
+zabbix_url: zabbix.myurl.com
 policy_file: selinux/zabbix_sock.te
 state: enabled
